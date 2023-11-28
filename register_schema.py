@@ -6,9 +6,9 @@ from stream_schema import SCHEMA_STR
 kafka_topic = 'ais-lab-schema'
 schema_registry_subject = f"{kafka_topic}-value"
 
-username="DM2QQACUP5UFSWQ7"
-password="cpnHbtcizpWSZGPOQgg0kDTnE9XuoryLFUY0ciAEpMPsanwtGhO5zYCTVPPrRFwW"
-schema_registry_url = f"https://{username}:{password}@psrc-e8vk0.southeastasia.azure.confluent.cloud"
+username=" "
+password=" "
+schema_registry_url = f"https://{username}:{password}@ "
 
 def register_schema(schema_registry_url, schema_registry_subject, schema_str):
     sr = SchemaRegistryClient({'url': schema_registry_url})
