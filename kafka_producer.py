@@ -6,11 +6,7 @@ from argparse import ArgumentParser, FileType
 from configparser import ConfigParser
 from confluent_kafka import Producer, Consumer
 
-config = {'bootstrap.servers': 'pkc-4j8dq.southeastasia.azure.confluent.cloud:9092',
-            'security.protocol': 'SASL_SSL',
-            'sasl.mechanism': 'PLAIN',
-            'sasl.username': '4KMNBA6YIYA7XCE4',
-            'sasl.password': 'GPMLyuRezz/Ja9/b6z08hKgF2kxlA4IcjHPrq8pTQ2waRZHYaDdE++7RgiaJl7Mf',
+config = {'bootstrap.servers': '13.212.25.169:9092',
             'client.id': 'confluent_kafka_producer'}
 
 # Set up producer
