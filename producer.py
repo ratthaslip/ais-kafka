@@ -7,15 +7,12 @@ from confluent_kafka.schema_registry.avro import AvroSerializer
 from get_schema import get_schema_from_schema_registry
 
 init_string = 'data: '
-source_url = 'https://stream.wikimedia.org/v2/stream/test'
-kafka_url = ' '
-
-username=" "
-password=" "
-schema_registry_url = f"https://{username}:{password}@ "
-
-kafka_topic = 'ais-lab-schema'
+source_url = 'https://stream.wikimedia.org/v2/stream/recentchange'
+kafka_url = '13.212.25.xxx:9092'
+schema_registry_url = 'http://13.212.25.xxx:8081'
+kafka_topic = 'ais-lab'
 schema_registry_subject = f"{kafka_topic}-value"
+
 
 def delivery_report(errmsg, msg):
     if errmsg is not None:
@@ -38,10 +35,7 @@ def avro_producer(source_url, kafka_url, schema_registry_url, schema_registry_su
     # Kafka Producer
     producer = SerializingProducer({
         'bootstrap.servers': kafka_url,
-        'security.protocol': 'SASL_SSL',
-        'sasl.mechanism': 'PLAIN',
-        'sasl.username': ' ',
-        'sasl.password': ' ',
+        'security.protocol': 'plaintext',
         'value.serializer': value_avro_serializer,
         'delivery.timeout.ms': 120000, # set it to 2 mins
         'enable.idempotence': 'true'
