@@ -3,7 +3,9 @@ from confluent_kafka.schema_registry import Schema
 
 from stream_schema import SCHEMA_STR
 
-kafka_topic = 'ais-lab-schema'
+
+schema_registry_url = 'http://13.212.25.xxx:8081'
+kafka_topic = 'ais-lab'
 schema_registry_subject = f"{kafka_topic}-value"
 
 username=" "
