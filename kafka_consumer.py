@@ -6,9 +6,13 @@ from argparse import ArgumentParser, FileType
 from configparser import ConfigParser
 from confluent_kafka import Producer, Consumer
 
-config = {'bootstrap.servers': '13.212.25.169:9092',
-            'client.id': 'confluent_kafka_producer'}
-
+config = {'bootstrap.servers': '13.250.22.xxx:9092',
+            'group.id': 'confluent_kafka_group',
+            'default.topic.config': {
+                'auto.offset.reset': 'smallest',
+                'offset.store.sync.interval.ms': 5000
+                }
+        }
 
 # Create Consumer instance
 consumer = Consumer(config)
