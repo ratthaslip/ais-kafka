@@ -1,0 +1,19 @@
+{
+	"name": "jdbc-source-connector",
+	"config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+        "tasks.max": "1",
+        "connection.url": "jdbc:mysql://dev.ctfeijhdsrqd.ap-southeast-1.rds.amazonaws.com:3306",
+        "connection.user": "admin",
+        "connection.password": "bd5262567",
+        "table.whitelist": "ORDERS",
+        "mode": "incrementing",
+        "incrementing.column.name": "id",
+        "topic.prefix": "RDS-MySQL-",
+        "poll.interval.ms": "1000"
+    }
+}
+
+
+
+
