@@ -1,0 +1,23 @@
+      command:
+        - bash
+        - -c
+        - |
+          echo "Installing Kafka Confluent Connector"
+          confluent-hub install --no-prompt confluentinc/kafka-connect-jdbc:10.0.0
+          echo "Installing MySQL JDBC Driver"
+          cd /usr/share/confluent-hub-components/confluentinc-kafka-connect-jdbc/lib
+          curl https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.25/mysql-connector-java-8.0.25.jar -o mysql-connector-java-8.0.25.jar
+          #
+          echo "Launching Kafka Connect worker"
+          /etc/confluent/docker/run &
+          #
+          echo "Waiting for Kafka Connect to start listening on 0.0.0.0:8083 ⏳"
+          while : ; do
+            curl_status=$$(curl -s -o /dev/null -w %{http_code} http://0.0.0.0:8083/connectors)
+            echo -e $$(date) " Kafka Connect listener HTTP state: " $$curl_status " (waiting for 200)"
+            if [ $$curl_status -eq 200 ] ; then
+            break
+            fi
+            sleep 5
+          done
+          sleep infinity
