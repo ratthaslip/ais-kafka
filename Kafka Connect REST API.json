@@ -1,7 +1,7 @@
 curl --location --request POST 'http://localhost:8083/connectors/' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-	"name": "jdbc-source-connector",
+	"name": "jdbc-source-connector_2",
 	"config": {
         "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
         "tasks.max": "1",
@@ -11,7 +11,7 @@ curl --location --request POST 'http://localhost:8083/connectors/' \
         "table.whitelist": "ORDERS",
         "mode": "incrementing",
         "incrementing.column.name": "id",
-        "topic.prefix": "RDS-MySQL-",
+        "topic.prefix": "RDS-MySQL2-",
         "poll.interval.ms": "1000"
 	}
 }'
