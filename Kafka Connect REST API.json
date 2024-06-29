@@ -1,4 +1,4 @@
-> curl --location --request POST 'http://localhost:8083/connectors/' \
+curl --location --request POST 'http://localhost:8083/connectors/' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"name": "jdbc-source-connector",
